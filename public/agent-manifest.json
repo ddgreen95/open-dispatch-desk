@@ -1,0 +1,90 @@
+{
+  "brand": "Open Dispatch Desk",
+  "networks": [
+    {
+      "name": "lakeside_tech_desk",
+      "front_man": "front_desk_coordinator",
+      "hocon": "./lakeside_tech_desk.network.json",
+      "description": "Ask what the fictional Lakeside Tech Desk does, what sample tickets are waiting, leave a sample work request, or paste a job note for a client-safe status draft.",
+      "tags": [
+        "agentified-website",
+        "sample-data"
+      ],
+      "sample_queries": [
+        "What does Lakeside Tech Desk do, and which sample tickets are waiting?",
+        "Wi-Fi is down at a small office. Please leave a sample work request.",
+        "Paste this job note and draft a client-safe status: On site at Maple Street Books. Router power light was amber. Reseated the cable. Guest network name shows again. Printer left offline. No passwords were changed.",
+        "Can you email the client and send an invoice for the printer visit?",
+        "What can the official Little Oven pizza example help with?"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [
+    "https://raw.githubusercontent.com"
+  ],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "The only peer is the official Little Oven pizza example, and only after the visitor agrees. Credentials are not sent there."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "lakeside_tech_desk",
+    "front_man": "front_desk_coordinator",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#0f6e6b"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "lakeside_tech_desk",
+        "front_man": "front_desk_coordinator",
+        "aliases": [
+          "lakeside_tech_desk",
+          "front_desk_coordinator"
+        ],
+        "url": "lakeside_tech_desk"
+      }
+    ],
+    "imports": [
+      {
+        "network": "lakeside_tech_desk",
+        "reference": "https://raw.githubusercontent.com/cognizant-ai-labs/agentic-web/main/examples/pizza_restaurant_agentified/pizza_restaurant_website_assistant",
+        "callers": [
+          "front_desk_coordinator"
+        ],
+        "status": "linked"
+      }
+    ],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": [
+      "get_desk_state",
+      "record_sample_intake",
+      "prepare_status_draft"
+    ]
+  }
+}

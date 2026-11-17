@@ -1,0 +1,10 @@
+{
+  "networks": [
+    {
+      "name": "lakeside_tech_desk"
+    }
+  ],
+  "actions": {
+    "version": 1
+  }
+}

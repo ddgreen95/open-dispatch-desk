@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "networks": {
+    "lakeside_tech_desk": {
+      "little_oven_pizza": "https://raw.githubusercontent.com/cognizant-ai-labs/agentic-web/main/examples/pizza_restaurant_agentified/pizza_restaurant_website_assistant"
+    }
+  }
+}
