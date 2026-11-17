@@ -1,0 +1,27 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "lakeside_tech_desk",
+      "front_man": "front_desk_coordinator",
+      "aliases": [
+        "lakeside_tech_desk",
+        "front_desk_coordinator"
+      ],
+      "url": "lakeside_tech_desk"
+    }
+  ],
+  "imports": [
+    {
+      "network": "lakeside_tech_desk",
+      "reference": "https://raw.githubusercontent.com/cognizant-ai-labs/agentic-web/main/examples/pizza_restaurant_agentified/pizza_restaurant_website_assistant",
+      "callers": [
+        "front_desk_coordinator"
+      ],
+      "status": "linked"
+    }
+  ],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}
